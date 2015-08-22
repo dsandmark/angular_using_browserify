@@ -32,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="player in vm.players | limitTo: vm.nrOfPlayersToShow">
+      <tr data-ng-repeat="player in vm.players | limitTo: vm.nrOfPlayersShowing">
         <td class="table__cell">{{ player.rank }}</td>
         <td class="table__cell"></td>
         <td class="table__cell">
@@ -45,6 +45,15 @@
         <td class="table__cell">{{ player.points }}</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <td class="table__footer" colspan="7">
+          <a ng-click="vm.loadMorePlayers()">
+            Load more ({{ vm.nrOfPlayersShowing }} / {{ vm.players.length }})
+          </a>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 
 </section>

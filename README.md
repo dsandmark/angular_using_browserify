@@ -27,6 +27,7 @@ Run the following in terminal: `$ gulp test`
 ## Limitations
 Due to time constraints (tight deadline), the following apply:
 * Only tested in Chrome version 44.0.2403.157 (64-bit)
+* Unit tests are not exhaustive, more POC
 
 ## Notes
 Unit tests are on the form: Assign -> Act -> Assert

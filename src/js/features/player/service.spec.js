@@ -7,7 +7,6 @@ describe('Player Service', function() {
 
   beforeEach(inject(function(playerService) {
     service = playerService;
-    service.clearPlayers();
   }));
 
   it('should exist', function() {
@@ -66,15 +65,6 @@ describe('Player Service', function() {
   });
 
   it('should return an empty array if no players exist', function() {
-    expect(service.getPlayers()).toEqual([]);
-  });
-
-  it('should be able to clear players', function() {
-    service.addPlayer('player #1');
-    service.addPlayer('player #2');
-
-    service.clearPlayers();
-
     expect(service.getPlayers()).toEqual([]);
   });
 

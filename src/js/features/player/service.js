@@ -22,7 +22,6 @@ function PlayerService() {
 
   service = {
     addPlayer: addPlayer,
-    clearPlayers: clearPlayers,
     getPlayers: getPlayers
   };
 
@@ -56,15 +55,6 @@ function PlayerService() {
   }
 
   /**
-   * Clears all players.
-   * @returns {void}
-   */
-  function clearPlayers() {
-    players = [];
-    nextPlayerRank = 0;
-  }
-
-  /**
    * Creates a rank for a new player.
    * @returns {Number} rank
    */
@@ -74,16 +64,6 @@ function PlayerService() {
     return nextPlayerRank;
   }
 
-  /*
-   * Adds test data for development.
-   * @TODO Remove this when shipping to prod ;)
-   */
-  function addTestData() {
-    addPlayer('player #1');
-    addPlayer('player #2');
-    addPlayer('player #3');
-  }
-
   /**
    * Called on creation of service. Sets initial values.
    * @returns {void}
@@ -91,7 +71,5 @@ function PlayerService() {
   function initialise() {
     players = [];
     nextPlayerRank = 0;
-
-    addTestData();
   }
 }

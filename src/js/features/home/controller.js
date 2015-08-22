@@ -8,7 +8,13 @@ controllersModule
 function HomeController(playerService) {
   var vm = this;
 
+  /**
+   * Number of players to load when "Load more" is clicked.
+   */
+  var NR_OF_PLAYERS_TO_LOAD = 5;
+
   vm.addPlayer = addPlayer;
+  vm.loadMorePlayers = loadMorePlayers;
   vm.showAddPlayer = showAddPlayer;
 
   initalise();
@@ -22,6 +28,14 @@ function HomeController(playerService) {
     vm.newPlayerName = '';
 
     hideAddPlayer();
+  }
+
+  function loadMorePlayers() {
+    vm.nrOfPlayersShowing += NR_OF_PLAYERS_TO_LOAD;
+
+    if (vm.nrOfPlayersShowing > vm.players.length) {
+      vm.nrOfPlayersShowing = vm.players.length;
+    }
   }
 
   /**
@@ -40,15 +54,32 @@ function HomeController(playerService) {
     vm.showAddPlayerContainer = true;
   }
 
+  /*
+   * Adds test data for development.
+   * @TODO Remove this when shipping to prod ;)
+   */
+  function addTestData() {
+    addPlayer('player #1');
+    addPlayer('player #2');
+    addPlayer('player #3');
+    addPlayer('player #4');
+    addPlayer('player #5');
+    addPlayer('player #6');
+    addPlayer('player #7');
+    addPlayer('player #8');
+    addPlayer('player #9');
+  }
+
   /**
    * Called on creation of controller. Sets initial values.
    * @returns {void}
    */
   function initalise() {
-    vm.players = playerService.getPlayers();
+    addTestData();
 
+    vm.players = playerService.getPlayers();
     vm.newPlayerName = '';
     vm.showAddPlayerContainer = false;
-    vm.nrOfPlayersToShow = 2;
+    vm.nrOfPlayersShowing = 2;
   }
 }
