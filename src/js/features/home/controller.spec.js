@@ -1,22 +1,22 @@
 'use strict';
 
 describe('HomeController', function() {
-  var basketServiceMock,
+  var playerServiceMock,
       controller;
 
   beforeEach(module('app'));
 
   beforeEach(function() {
-    basketServiceMock = {
-      addProduct: sinon.stub(),
-      getProducts: sinon.stub(),
-      getTotalPrice: sinon.stub()
+    playerServiceMock = {
+      addPlayer: sinon.stub(),
+      clearPlayers: sinon.stub(),
+      getPlayers: sinon.stub()
     };
   });
 
   beforeEach(inject(function($controller) {
     controller = $controller('HomeController', {
-      basketService: basketServiceMock
+      playerService: playerServiceMock
     });
   }));
 

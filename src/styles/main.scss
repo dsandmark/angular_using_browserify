@@ -1,3 +1,105 @@
+// Variables
+
+$table-cell-padding: 10px;
+$table-header-padding: 10px;
+
+// Helpers
+
+.center__container {
+  margin: 0 auto;
+}
+
+.text__left {
+  text-align: left;
+}
+
+// Common
+
+.header,
+.main,
+.footer {
+  @extend .center__container;
+
+  width: 1000px;
+}
+
+// Header
+
+.header {
+  // background-image: url(../images/jan_owe_waldner_background.jpg);
+  background-color: limegreen;
+  height: 50px;
+  font-size: 1.5em;
+}
+
+.header__title {
+  // padding-top: 200px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+// Main
+
 .main {
-  color: tomato;
+  background-color: #fff;
+  height: 400px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.main__title {
+  font-size: 18px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+}
+
+.table__header {
+  background-color: #E4E4E4;
+  border: 1px solid #eee;
+  padding: $table-header-padding;
+}
+
+.table__header--small {
+  width: 4%;
+}
+
+.table__header--medium {
+  width: 12%;
+}
+
+.table__header--large {
+  // width: 48%;
+}
+
+.table__cell {
+  border: 1px solid #eee;
+  padding: $table-cell-padding;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table__cell--player {
+  float: left;
+  margin-left: $table-cell-padding;
+  height: 20px;
+  line-height: 20px;
+}
+
+.table__cell--image {
+  background-image: url(../images/default_player_logo.png);
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+
+// Footer
+
+.footer {
+  background-color: tomato;
+  height: 400px;
 }

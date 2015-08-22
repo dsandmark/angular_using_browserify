@@ -5,20 +5,20 @@ var controllersModule = require('../controller_index');
 controllersModule
   .controller('HomeController', HomeController);
 
-function HomeController(basketService) {
+function HomeController(playerService) {
   var vm = this;
 
-  vm.addToBasket = addToBasket;
+  vm.addPlayer = addPlayer;
 
   initalise();
 
   /**
-   * Adds a product with @param productId to basket.
-   * @param {Number} productId Id of product to add
+   * Adds a player.
+   * @param {String} name Name of player
    * @returns {void}
    */
-  function addToBasket(productId) {
-    console.log('example method with productId: ', productId);
+  function addPlayer(name) {
+    console.log('name', name);
   }
 
   /**
@@ -26,6 +26,6 @@ function HomeController(basketService) {
    * @returns {void}
    */
   function initalise() {
-    vm.basket = basketService;
+    vm.players = playerService.getPlayers();
   }
 }

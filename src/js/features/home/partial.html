@@ -1,3 +1,43 @@
-<p>
-  Example partial for Home
-</p>
+<section class="header">
+  <h1 class="header__title center">
+    Ping pong league table
+  </h1>
+</section>
+
+<section class="main">
+
+  <h3 class="main__title">Leaderboard:</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="table__header table__header--small">#</th>
+        <th class="table__header table__header--small"></th>
+        <th class="table__header table__header--large text__left">Name</th>
+        <th class="table__header table__header--medium">Won</th>
+        <th class="table__header table__header--medium">Lost</th>
+        <th class="table__header table__header--medium">Won / Lost %</th>
+        <th class="table__header table__header--medium">Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="player in vm.players">
+        <td class="table__cell">{{ player.rank }}</td>
+        <td class="table__cell"></td>
+        <td class="table__cell">
+          <div class="table__cell--image"></div>
+          <span class="table__cell--player">{{ player.name }}</span>
+        </td>
+        <td class="table__cell">{{ player.won }}</td>
+        <td class="table__cell">{{ player.lost }}</td>
+        <td class="table__cell">{{ player.won / player.lost || "N/A" }}</td>
+        <td class="table__cell">{{ player.points }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+
+<section class="footer">
+
+</section>

@@ -24,7 +24,13 @@ Notes:
 ## Running Unit Tests
 Run the following in terminal: `$ gulp test`
 
+## Limitations
+Due to time constraints (tight deadline), the following apply:
+* Only tested in Chrome version 44.0.2403.157 (64-bit)
+
 ## Notes
 Unit tests are on the form: Assign -> Act -> Assert
+
 Jasmine Describe blocks are replaced by more detailed 'it' blocks.
+
 Leaving client tests as an excercise to the reader

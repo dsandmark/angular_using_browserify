@@ -6,4 +6,4 @@
 
 module.exports = angular.module('app.services', []);
 
-require('./basket/service');
+require('./player/service');
