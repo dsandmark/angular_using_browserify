@@ -27,6 +27,7 @@ $default-padding: 10px;
 .footer {
   @extend .center__container;
 
+  padding: 30px;
   width: 1000px;
 }
 
@@ -60,7 +61,6 @@ a {
 
 .main {
   background-color: #fff;
-  padding: 30px;
 }
 
 .main__title {
@@ -128,6 +128,16 @@ a {
 // Footer
 
 .footer {
-  background-color: tomato;
   height: 400px;
+}
+
+.add-game__vs,
+.add-game__select {
+  float: left;
+}
+
+.add-game__score-label {
+  display: block;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }

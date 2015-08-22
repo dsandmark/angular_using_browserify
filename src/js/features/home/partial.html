@@ -12,7 +12,7 @@
     <form novalidate>
       <label class="add-player__label" for="new-player-name">Name:</label>
       <input class="add-player__inputfield" type="text" id="new-player-name" ng-model="vm.newPlayerName" />
-      <button class="add-player__button" ng-click="vm.addPlayer()">+</button>
+      <button class="add-player__button" ng-click="vm.addPlayer(vm.newPlayerName)">+</button>
     </form>
   </div>
 
@@ -60,4 +60,32 @@
 
 <section class="footer">
 
+  <div class="add-game">
+
+    <h3>Add games</h3>
+
+    <select class="add-game__select"
+            ng-model="vm.firstPlayerInGame"
+            ng-options="player.name for player in vm.players">
+    </select>
+
+    <span class="add-game__vs">VS</span>
+
+    <select ng-model="vm.secondPlayerInGame" ng-options="player.name for player in vm.players"></select>
+
+    <span class="add-game__score-label">Score (max. of 5)</span>
+
+    <input class="add-game__inputfield"
+           type="text"
+           id="new-game-player-one-score"
+           ng-model="vm.newGamePlayerOneScore" />
+
+    <input class="add-game__inputfield"
+           type="text"
+           id="new-game-player-two-score"
+           ng-model="vm.newGamePlayerTwoScore" />
+
+    <button ng-click="vm.addGame()">Add game</button>
+
+  </div>
 </section>

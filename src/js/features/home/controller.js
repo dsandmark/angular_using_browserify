@@ -13,6 +13,11 @@ function HomeController(playerService) {
    */
   var NR_OF_PLAYERS_TO_LOAD = 5;
 
+  /**
+   * Number of players to load when view is loaded.
+   */
+  var INITIAL_PLAYERS_SHOWING = 5;
+
   vm.addPlayer = addPlayer;
   vm.loadMorePlayers = loadMorePlayers;
   vm.showAddPlayer = showAddPlayer;
@@ -21,10 +26,11 @@ function HomeController(playerService) {
 
   /**
    * Adds a player.
+   * @param {String} name Name of player
    * @returns {void}
    */
-  function addPlayer() {
-    playerService.addPlayer(vm.newPlayerName);
+  function addPlayer(name) {
+    playerService.addPlayer(name);
     vm.newPlayerName = '';
 
     hideAddPlayer();
@@ -80,6 +86,8 @@ function HomeController(playerService) {
     vm.players = playerService.getPlayers();
     vm.newPlayerName = '';
     vm.showAddPlayerContainer = false;
-    vm.nrOfPlayersShowing = 2;
+    vm.nrOfPlayersShowing = INITIAL_PLAYERS_SHOWING;
+    vm.firstPlayerInGame = '';
+    vm.secondPlayerInGame = '';
   }
 }
