@@ -8,12 +8,23 @@
 
   <h3 class="main__title">Leaderboard:</h3>
 
+  <div class="add-player" ng-if="vm.showAddPlayerContainer">
+    <form novalidate>
+      <label class="add-player__label" for="new-player-name">Name:</label>
+      <input class="add-player__inputfield" type="text" id="new-player-name" ng-model="vm.newPlayerName" />
+      <button class="add-player__button" ng-click="vm.addPlayer()">+</button>
+    </form>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
         <th class="table__header table__header--small">#</th>
         <th class="table__header table__header--small"></th>
-        <th class="table__header table__header--large text__left">Name</th>
+        <th class="table__header table__header--large">
+          <span class="left">Name</span>
+          <a class="right" ng-click="vm.showAddPlayer()">Add player</span>
+        </th>
         <th class="table__header table__header--medium">Won</th>
         <th class="table__header table__header--medium">Lost</th>
         <th class="table__header table__header--medium">Won / Lost %</th>
@@ -21,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="player in vm.players">
+      <tr data-ng-repeat="player in vm.players | limitTo: vm.nrOfPlayersToShow">
         <td class="table__cell">{{ player.rank }}</td>
         <td class="table__cell"></td>
         <td class="table__cell">

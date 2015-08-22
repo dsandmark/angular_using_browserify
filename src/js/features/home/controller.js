@@ -9,16 +9,35 @@ function HomeController(playerService) {
   var vm = this;
 
   vm.addPlayer = addPlayer;
+  vm.showAddPlayer = showAddPlayer;
 
   initalise();
 
   /**
    * Adds a player.
-   * @param {String} name Name of player
    * @returns {void}
    */
-  function addPlayer(name) {
-    console.log('name', name);
+  function addPlayer() {
+    playerService.addPlayer(vm.newPlayerName);
+    vm.newPlayerName = '';
+
+    hideAddPlayer();
+  }
+
+  /**
+   * Hides "Add Player" container.
+   * @returns {void}
+   */
+  function hideAddPlayer() {
+    vm.showAddPlayerContainer = false;
+  }
+
+  /**
+   * Shows "Add Player" container.
+   * @returns {void}
+   */
+  function showAddPlayer() {
+    vm.showAddPlayerContainer = true;
   }
 
   /**
@@ -27,5 +46,9 @@ function HomeController(playerService) {
    */
   function initalise() {
     vm.players = playerService.getPlayers();
+
+    vm.newPlayerName = '';
+    vm.showAddPlayerContainer = false;
+    vm.nrOfPlayersToShow = 2;
   }
 }

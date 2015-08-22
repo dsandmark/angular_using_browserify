@@ -1,7 +1,6 @@
 // Variables
 
-$table-cell-padding: 10px;
-$table-header-padding: 10px;
+$default-padding: 10px;
 
 // Helpers
 
@@ -13,6 +12,14 @@ $table-header-padding: 10px;
   text-align: left;
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 // Common
 
 .header,
@@ -21,6 +28,17 @@ $table-header-padding: 10px;
   @extend .center__container;
 
   width: 1000px;
+}
+
+button,
+input {
+  height: 30px;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 // Header
@@ -54,6 +72,18 @@ $table-header-padding: 10px;
   text-align: center;
 }
 
+.add-player {
+  padding: $default-padding;
+}
+
+.add-player__label {
+  display: block;
+}
+
+.add-player__inputfield {
+  width: 300px;
+}
+
 .table {
   width: 100%;
 }
@@ -61,7 +91,7 @@ $table-header-padding: 10px;
 .table__header {
   background-color: #E4E4E4;
   border: 1px solid #eee;
-  padding: $table-header-padding;
+  padding: $default-padding;
 }
 
 .table__header--small {
@@ -72,20 +102,16 @@ $table-header-padding: 10px;
   width: 12%;
 }
 
-.table__header--large {
-  // width: 48%;
-}
-
 .table__cell {
   border: 1px solid #eee;
-  padding: $table-cell-padding;
+  padding: $default-padding;
   text-align: center;
   vertical-align: middle;
 }
 
 .table__cell--player {
   float: left;
-  margin-left: $table-cell-padding;
+  margin-left: $default-padding;
   height: 20px;
   line-height: 20px;
 }
