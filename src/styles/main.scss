@@ -29,6 +29,10 @@ $dark-border: 1px solid #000;
 
 // Common
 
+html * {
+  font-family: Arial;
+}
+
 .header,
 .main,
 .footer {
