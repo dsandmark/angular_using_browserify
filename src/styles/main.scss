@@ -2,6 +2,13 @@
 
 $default-padding: 10px;
 
+$small-margin: 10px;
+$default-margin: 15px;
+$large-margin: 2 * $default-margin;
+
+$default-border: 1px solid #eee;
+$dark-border: 1px solid #000;
+
 // Helpers
 
 .center__container {
@@ -27,7 +34,7 @@ $default-padding: 10px;
 .footer {
   @extend .center__container;
 
-  padding: 30px;
+  padding: 0 30px;
   width: 1000px;
 }
 
@@ -36,10 +43,16 @@ input {
   height: 30px;
 }
 
-a {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
+h1 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.17em;
+}
+
+h4 {
+  font-size: 1.12em;
 }
 
 // Header
@@ -47,26 +60,22 @@ a {
 .header {
   // background-image: url(../images/jan_owe_waldner_background.jpg);
   background-color: limegreen;
-  height: 50px;
+  height: 100px;
   font-size: 1.5em;
 }
 
 .header__title {
-  // padding-top: 200px;
   padding-top: 20px;
   text-align: center;
 }
 
 // Main
 
-.main {
-  background-color: #fff;
-}
-
 .main__title {
   font-size: 18px;
   padding-bottom: 20px;
   text-align: center;
+  margin: $default-margin;
 }
 
 .add-player {
@@ -87,7 +96,7 @@ a {
 
 .table__header {
   background-color: #E4E4E4;
-  border: 1px solid #eee;
+  border: $default-border;
   padding: $default-padding;
 }
 
@@ -100,7 +109,7 @@ a {
 }
 
 .table__cell {
-  border: 1px solid #eee;
+  border: $default-border;
   padding: $default-padding;
   text-align: center;
   vertical-align: middle;
@@ -121,6 +130,7 @@ a {
 }
 
 .table__footer {
+  border: $default-border;
   text-align: center;
   padding: $default-padding;
 }
@@ -129,15 +139,73 @@ a {
 
 .footer {
   height: 400px;
+  margin-top: 2 * $default-margin;
 }
 
-.add-game__vs,
-.add-game__select {
+// Latest games
+
+.latest-games__title {
+  text-align: center;
+  margin: $large-margin;
+}
+
+.latest-games__game {
+  margin-bottom: $large-margin;
+  height: 50px;
+  position: relative;
+}
+
+.latest-games__player {
+  margin-bottom: $small-margin;
+}
+
+.latest-games__set-label {
+  border-right: $dark-border;
+  margin-right: 5px;
+}
+
+.latest-games__remove {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  text-decoration: none;
+}
+
+// Add games
+
+.add-games,
+.latest-games {
+  width: 50%;
   float: left;
+  text-align: center;
+  border-top: $default-border;
 }
 
-.add-game__score-label {
+.add-games {
+  border-left: $default-border;
+}
+
+.add-games__title {
+  text-align: center;
+  margin: $large-margin;
+}
+
+.add-games__select {
+  width: 175px;
+}
+
+.add-games__score {
+  text-align: center;
+  width: 50px;
+}
+
+.add-games__score-label {
   display: block;
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin-bottom: $default-margin;
+  margin-top: $default-margin;
+}
+
+.add-games__submit {
+  display: block;
+  margin: $default-margin auto;
 }

@@ -23,7 +23,7 @@
         <th class="table__header table__header--small"></th>
         <th class="table__header table__header--large">
           <span class="left">Name</span>
-          <a class="right" ng-click="vm.showAddPlayer()">Add player</span>
+          <a href="" class="right" ng-click="vm.showAddPlayer()">Add player</span>
         </th>
         <th class="table__header table__header--medium">Won</th>
         <th class="table__header table__header--medium">Lost</th>
@@ -48,7 +48,7 @@
     <tfoot>
       <tr>
         <td class="table__footer" colspan="7">
-          <a ng-click="vm.loadMorePlayers()">
+          <a href="" ng-click="vm.loadMorePlayers()">
             Load more ({{ vm.nrOfPlayersShowing }} / {{ vm.players.length }})
           </a>
         </td>
@@ -60,32 +60,57 @@
 
 <section class="footer">
 
-  <div class="add-game">
+  <div class="latest-games">
 
-    <h3>Add games</h3>
+    <h3 class="latest-games__title">Latest games</h3>
 
-    <select class="add-game__select"
-            ng-model="vm.firstPlayerInGame"
+    <div class="latest-games__game" ng-repeat="game in vm.games">
+      <h4 class="latest-games__player">
+        {{ game.playerOneName }} {{ game.playerOneWonSets }} -
+        {{ game.playerTwoWonSets }} {{ game.playerTwoName }}
+      </h4>
+
+      <span ng-repeat="set in game.sets"
+            ng-class="{'latest-games__set-label': !$last}">
+        {{ set.playerOneScore }} - {{ set.playerOneScore }}
+      </span>
+
+      <a href="" class="latest-games__remove"
+         ng-click="vm.removeGame(game)">&#10006
+      </a>
+    </div>
+  </div>
+
+  <div class="add-games">
+
+    <h3 class="add-games__title">Add games</h3>
+
+    <select class="add-games__select"
+            ng-model="vm.newGamePlayerOne"
             ng-options="player.name for player in vm.players">
     </select>
 
-    <span class="add-game__vs">VS</span>
+    <span class="add-games__vs">VS</span>
 
-    <select ng-model="vm.secondPlayerInGame" ng-options="player.name for player in vm.players"></select>
+    <select class="add-games__select"
+            ng-model="vm.newGamePlayerTwo"
+            ng-options="player.name for player in vm.players">
+    </select>
 
-    <span class="add-game__score-label">Score (max. of 5)</span>
+    <span class="add-games__score-label">Score (max. of 5)</span>
 
-    <input class="add-game__inputfield"
+    <input class="add-games__score"
            type="text"
            id="new-game-player-one-score"
            ng-model="vm.newGamePlayerOneScore" />
 
-    <input class="add-game__inputfield"
+    <input class="add-games__score"
            type="text"
            id="new-game-player-two-score"
            ng-model="vm.newGamePlayerTwoScore" />
 
-    <button ng-click="vm.addGame()">Add game</button>
+    <button class="add-games__submit" ng-click="vm.addGame()">Add game</button>
 
   </div>
+
 </section>

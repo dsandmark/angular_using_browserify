@@ -78,7 +78,7 @@ describe('HomeController', function() {
 
     controller.loadMorePlayers();
 
-    expect(controller.nrOfPlayersShowing).toEqual(7);
+    expect(controller.nrOfPlayersShowing).toEqual(10);
   });
 
   it('should\'t load more players than what is available', function() {

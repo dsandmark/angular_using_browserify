@@ -31,7 +31,7 @@ function PlayerService() {
 
   /**
    * Adds a player.
-   * @param {Object} name of player
+   * @param {String} name of player
    * @returns {void}
    */
   function addPlayer(name) {
