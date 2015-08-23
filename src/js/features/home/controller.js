@@ -20,6 +20,7 @@ function HomeController(gameService, playerService) {
 
   vm.addGame = addGame;
   vm.addPlayer = addPlayer;
+  vm.calculateWonLostPercentage = calculateWonLostPercentage;
   vm.loadMorePlayers = loadMorePlayers;
   vm.removeGame = removeGame;
   vm.showAddPlayer = showAddPlayer;
@@ -38,6 +39,8 @@ function HomeController(gameService, playerService) {
     };
 
     gameService.addGame(game);
+
+    playerService.updatePlayers(game);
   }
 
   /**
@@ -52,17 +55,26 @@ function HomeController(gameService, playerService) {
     hideAddPlayer();
   }
 
+  /**
+   * Calculates Won / Lost %.
+   * @param  {Object} player Player to calculate for
+   * @returns {Number} won/lost percentage for @param player
+   */
+  function calculateWonLostPercentage(player) {
+    if (player.won === 0 || player.lost === 0) {
+      return 0;
+    }
+
+    var wonLostPercentage = player.won / (player.won + player.lost) * 100;
+
+    // Converting to Number to get rid of zeroes in e.g. 70.0000.
+    return Number(wonLostPercentage.toFixed(4));
+  }
 
   function getNewGameSets() {
     return [{
-      playerOneScore: 11,
-      playerTwoScore: 7
-    }, {
-      playerOneScore: 8,
-      playerTwoScore: 11
-    }, {
-      playerOneScore: 11,
-      playerTwoScore: 0
+      playerOneScore: parseInt(vm.newGamePlayerOneScore, 10),
+      playerTwoScore: parseInt(vm.newGamePlayerTwoScore, 10)
     }];
   }
 
@@ -106,6 +118,8 @@ function HomeController(gameService, playerService) {
     addPlayer('Laverne');
     addPlayer('Todd');
 
+    vm.newGamePlayerOneScore = 11;
+    vm.newGamePlayerTwoScore = 7;
     vm.newGamePlayerOne = {
       name: 'Turk'
     };
@@ -114,6 +128,8 @@ function HomeController(gameService, playerService) {
     };
     addGame();
 
+    vm.newGamePlayerOneScore = 2;
+    vm.newGamePlayerTwoScore = 11;
     vm.newGamePlayerOne = {
       name: 'Carla'
     };
@@ -121,6 +137,9 @@ function HomeController(gameService, playerService) {
       name: 'Todd'
     };
     addGame();
+
+    vm.newGamePlayerOneScore = null;
+    vm.newGamePlayerTwoScore = null;
   }
 
   function removeGame(game) {

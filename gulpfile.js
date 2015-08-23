@@ -183,6 +183,6 @@ gulp.task('watch', ['server'], function() {
   gulp.watch(config.views.src, ['views']);
 });
 
-gulp.task('dev', ['clean'], function() {
+gulp.task('default', ['clean'], function() {
   runSequence(['views', 'lint', 'styles', 'images', 'scripts'], 'watch');
 });

@@ -12,11 +12,11 @@ describe('HomeController', function() {
 
   beforeEach(function() {
     playerMock = {
-      lost: 0,
+      lost: 3,
       name: 'name',
       points: 0,
       rank: 0,
-      won: 0
+      won: 7
     };
 
     threePlayers = [
@@ -40,7 +40,8 @@ describe('HomeController', function() {
 
     playerServiceMock = {
       addPlayer: sinon.stub(),
-      getPlayers: sinon.stub()
+      getPlayers: sinon.stub(),
+      updatePlayers: sinon.stub()
     };
   });
 
@@ -88,6 +89,14 @@ describe('HomeController', function() {
     controller.loadMorePlayers();
 
     expect(controller.nrOfPlayersShowing).toEqual(3);
+  });
+
+  it('should calculate won / lost %', function() {
+    playerServiceMock.getPlayers.returns([playerMock]);
+
+    createController();
+
+    expect(controller.calculateWonLostPercentage(playerMock)).toEqual(70);
   });
 
 });

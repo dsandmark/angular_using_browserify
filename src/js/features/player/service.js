@@ -1,6 +1,7 @@
 'use strict';
 
-var servicesModule = require('../service_index.js');
+var _ = require('lodash'),
+    servicesModule = require('../service_index.js');
 
 servicesModule
   .service('playerService', PlayerService);
@@ -22,7 +23,8 @@ function PlayerService() {
 
   service = {
     addPlayer: addPlayer,
-    getPlayers: getPlayers
+    getPlayers: getPlayers,
+    updatePlayers: updatePlayers
   };
 
   initialise();
@@ -62,6 +64,63 @@ function PlayerService() {
     nextPlayerRank++;
 
     return nextPlayerRank;
+  }
+
+  /**
+   * Finds a player.
+   * @param  {String} name Name of player to find
+   * @returns {Object} player with name @param name
+   *
+   * @example
+   * getPlayer('Bob') ->
+   * {
+   *   lost: 0
+   *   name: 'Bob',
+   *   points: 90,
+   *   rank: 1,
+   *   won: 3
+   * }
+   */
+  function getPlayer(name) {
+    return _.find(players, function(player) {
+      return player.name === name;
+    });
+  }
+
+  /**
+   * Updates players with new data from a game
+   * @param  {Object} game Game with new data
+   * @returns {void}
+   */
+  function updatePlayers(game) {
+    var playerOne = getPlayer(game.playerOneName);
+    var playerTwo = getPlayer(game.playerTwoName);
+
+    var playerOneWonSets = 0;
+    var playerTwoWonSets = 0;
+
+    _.forEach(game.sets, function(set) {
+      if (set.playerOneScore > set.playerTwoScore) {
+        playerOneWonSets++;
+      } else {
+        playerTwoWonSets++;
+      }
+
+      playerOne.points += set.playerOneScore;
+      playerTwo.points += set.playerTwoScore;
+    });
+
+    if (playerOneWonSets > playerTwoWonSets) {
+      playerOne.won += 1;
+      playerTwo.lost += 1;
+
+    } else if (playerOneWonSets < playerTwoWonSets) {
+      playerTwo.won += 1;
+      playerOne.lost += 1;
+
+    } else {
+      console.error('It\'s a tie. Go play some more!');
+    }
   }
 
   /**

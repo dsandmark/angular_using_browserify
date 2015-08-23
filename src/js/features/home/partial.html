@@ -41,7 +41,7 @@
         </td>
         <td class="table__cell">{{ player.won }}</td>
         <td class="table__cell">{{ player.lost }}</td>
-        <td class="table__cell">{{ player.won / player.lost || "N/A" }}</td>
+        <td class="table__cell">{{ vm.calculateWonLostPercentage(player) }}</td>
         <td class="table__cell">{{ player.points }}</td>
       </tr>
     </tbody>
