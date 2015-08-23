@@ -99,4 +99,8 @@ describe('HomeController', function() {
     expect(controller.calculateWonLostPercentage(playerMock)).toEqual(70);
   });
 
+  it('should test addSetFields method', function() {
+    // TODO Tests needed if this was an app going to prod.
+  });
+
 });

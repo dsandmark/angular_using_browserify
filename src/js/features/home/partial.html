@@ -72,7 +72,7 @@
 
       <span ng-repeat="set in game.sets"
             ng-class="{'latest-games__set-label': !$last}">
-        {{ set.playerOneScore }} - {{ set.playerOneScore }}
+        {{ set.playerOneScore }} - {{ set.playerTwoScore }}
       </span>
 
       <a href="" class="latest-games__remove"
@@ -99,15 +99,26 @@
 
     <span class="add-games__score-label">Score (max. of 5)</span>
 
-    <input class="add-games__score"
-           type="text"
-           id="new-game-player-one-score"
-           ng-model="vm.newGamePlayerOneScore" />
+    <div class="add-games__set"
+         ng-repeat="field in vm.nrOfSetFields track by $index">
 
-    <input class="add-games__score"
-           type="text"
-           id="new-game-player-two-score"
-           ng-model="vm.newGamePlayerTwoScore" />
+      <input class="add-games__score"
+             type="text"
+             id="new-game-player-one-score"
+             ng-model="vm.newGamePlayerOneScores[$index]" />
+
+      <span>-</span>
+
+      <input class="add-games__score"
+             type="text"
+             id="new-game-player-two-score"
+             ng-model="vm.newGamePlayerTwoScores[$index]" />
+
+      <a href="" ng-if="$last && vm.showAddSet" ng-click="vm.addSetFields()">
+        <div class="add-games__add-set">Add set</div>
+      </a>
+
+    </div>
 
     <button class="add-games__submit" ng-click="vm.addGame()">Add game</button>
 

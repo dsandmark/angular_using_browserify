@@ -203,10 +203,24 @@ h4 {
   width: 50px;
 }
 
+.add-games__set {
+  margin-bottom: $default-margin;
+}
+
 .add-games__score-label {
   display: block;
   margin-bottom: $default-margin;
   margin-top: $default-margin;
+}
+
+.add-games__add-set {
+  background: url(../images/add.png) center left no-repeat;
+  padding-left: 25px;
+  display: inline-block;
+  line-height: 20px;
+  position: absolute;
+  margin-left: $default-margin;
+  margin-top: 5px;
 }
 
 .add-games__submit {

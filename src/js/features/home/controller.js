@@ -18,8 +18,14 @@ function HomeController(gameService, playerService) {
    */
   var INITIAL_PLAYERS_SHOWING = 5;
 
+  /**
+   * Maximum number of sets per game.
+   */
+  var MAX_NUMBER_OF_SETS = 5;
+
   vm.addGame = addGame;
   vm.addPlayer = addPlayer;
+  vm.addSetFields = addSetFields;
   vm.calculateWonLostPercentage = calculateWonLostPercentage;
   vm.loadMorePlayers = loadMorePlayers;
   vm.removeGame = removeGame;
@@ -32,6 +38,11 @@ function HomeController(gameService, playerService) {
    * @returns {void}
    */
   function addGame() {
+    if (!vm.newGamePlayerOne || !vm.newGamePlayerOne) {
+      console.error('Need to have two players in a game.');
+      return;
+    }
+
     var game = {
       playerOneName: vm.newGamePlayerOne.name,
       playerTwoName: vm.newGamePlayerTwo.name,
@@ -41,6 +52,11 @@ function HomeController(gameService, playerService) {
     gameService.addGame(game);
 
     playerService.updatePlayers(game);
+
+    vm.newGamePlayerOneScores = [];
+    vm.newGamePlayerTwoScores = [];
+    vm.nrOfSetFields = [''];
+    vm.showAddSet = true;
   }
 
   /**
@@ -53,6 +69,22 @@ function HomeController(gameService, playerService) {
     vm.newPlayerName = '';
 
     hideAddPlayer();
+  }
+
+  /**
+   * Adds two more input fields for set scores.
+   * @returns {void}
+   */
+  function addSetFields() {
+    if (vm.nrOfSetFields.length < MAX_NUMBER_OF_SETS) {
+      // ng-repeat needs an object to iterate over so an array
+      // is used as a counter here.
+      vm.nrOfSetFields.push('');
+    }
+
+    if (vm.nrOfSetFields.length === MAX_NUMBER_OF_SETS) {
+      vm.showAddSet = false;
+    }
   }
 
   /**
@@ -72,10 +104,16 @@ function HomeController(gameService, playerService) {
   }
 
   function getNewGameSets() {
-    return [{
-      playerOneScore: parseInt(vm.newGamePlayerOneScore, 10),
-      playerTwoScore: parseInt(vm.newGamePlayerTwoScore, 10)
-    }];
+    var sets = [];
+
+    for (var i = 0; i < vm.nrOfSetFields.length; i++) {
+      sets.push({
+        playerOneScore: parseInt(vm.newGamePlayerOneScores[i], 10),
+        playerTwoScore: parseInt(vm.newGamePlayerTwoScores[i], 10)
+      });
+    }
+
+    return sets;
   }
 
   function loadMorePlayers() {
@@ -117,29 +155,6 @@ function HomeController(gameService, playerService) {
     addPlayer('Ted');
     addPlayer('Laverne');
     addPlayer('Todd');
-
-    vm.newGamePlayerOneScore = 11;
-    vm.newGamePlayerTwoScore = 7;
-    vm.newGamePlayerOne = {
-      name: 'Turk'
-    };
-    vm.newGamePlayerTwo = {
-      name: 'Cox'
-    };
-    addGame();
-
-    vm.newGamePlayerOneScore = 2;
-    vm.newGamePlayerTwoScore = 11;
-    vm.newGamePlayerOne = {
-      name: 'Carla'
-    };
-    vm.newGamePlayerTwo = {
-      name: 'Todd'
-    };
-    addGame();
-
-    vm.newGamePlayerOneScore = null;
-    vm.newGamePlayerTwoScore = null;
   }
 
   function removeGame(game) {
@@ -154,12 +169,17 @@ function HomeController(gameService, playerService) {
     vm.players = playerService.getPlayers();
     vm.games = gameService.getGames();
 
+    vm.firstPlayerInGame = '';
+    vm.newPlayerName = '';
+    vm.nrOfPlayersShowing = INITIAL_PLAYERS_SHOWING;
+    vm.nrOfSetFields = [''];
+    vm.secondPlayerInGame = '';
+    vm.showAddPlayerContainer = false;
+    vm.showAddSet = true;
+
     addTestData();
 
-    vm.newPlayerName = '';
-    vm.showAddPlayerContainer = false;
-    vm.nrOfPlayersShowing = INITIAL_PLAYERS_SHOWING;
-    vm.firstPlayerInGame = '';
-    vm.secondPlayerInGame = '';
+    vm.newGamePlayerOneScores = [];
+    vm.newGamePlayerTwoScores = [];
   }
 }

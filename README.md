@@ -6,7 +6,8 @@ Author: Dennis Sandmark (d.sandmark@gmail.com)
 Due to time constraints (tight deadline), the following apply:
 * Only tested in Chrome version 44.0.2403.157 (64-bit)
 * Unit tests are not exhaustive, see them more as a POC
-* Only one set can be played per game
+* Error handling is logged in console
+* There's likely a bug or two in there but I've spent too much time on this already
 
 # How to Run
 1. clone repo or download as zip file
