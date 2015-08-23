@@ -7,3 +7,4 @@
 module.exports = angular.module('app.services', []);
 
 require('./player/service');
+require('./game/service');
