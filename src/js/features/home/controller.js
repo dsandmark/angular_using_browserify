@@ -110,6 +110,10 @@ function HomeController(gameService, playerService) {
     return Number(wonLostPercentage.toFixed(4));
   }
 
+  /**
+   * Creates a list of sets by fields populated by the user.
+   * @returns {Array} List of sets
+   */
   function getNewGameSets() {
     var sets = [];
 
@@ -123,6 +127,10 @@ function HomeController(gameService, playerService) {
     return sets;
   }
 
+  /**
+   * Increases limit of players shown.
+   * @returns {void}
+   */
   function loadMorePlayers() {
     vm.nrOfPlayersShowing += ADDITIONAL_PLAYERS_TO_LOAD;
 
@@ -179,6 +187,8 @@ function HomeController(gameService, playerService) {
     vm.games = gameService.getGames();
 
     vm.firstPlayerInGame = '';
+    vm.newGamePlayerOneScores = [];
+    vm.newGamePlayerTwoScores = [];
     vm.newPlayerName = '';
     vm.nrOfPlayersShowing = INITIAL_PLAYERS_SHOWING;
     vm.nrOfSetFields = [''];
@@ -187,8 +197,5 @@ function HomeController(gameService, playerService) {
     vm.showAddSet = true;
 
     addTestData();
-
-    vm.newGamePlayerOneScores = [];
-    vm.newGamePlayerTwoScores = [];
   }
 }

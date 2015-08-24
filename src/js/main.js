@@ -16,8 +16,7 @@ var dependencies = [
   'app.templates'
 ];
 
-// Mount on window for testing.
-window.app = angular.module('app', dependencies);
+angular.module('app', dependencies);
 
 angular.module('app').config(require('./routes'));
 

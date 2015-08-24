@@ -1,12 +1,9 @@
-Ping pong
+# Ping pong
 
 Author: Dennis Sandmark (d.sandmark@gmail.com)
 
-# Intro
-There's a lot more I'd want to do but this app shows
-that I'm proficient with Angular.
-
-There's some hacks here and there CSS wise but I went with KISS.
+## Intro
+Ping pong league table made in Angular and Browserify.
 
 Due to time constraints (tight deadline), the following apply:
 * Only tested in Chrome version 44.0.2403.157 (64-bit)
@@ -15,7 +12,11 @@ Due to time constraints (tight deadline), the following apply:
 * There's likely a bug or two in the app but it works as a POC
 * Ranking is only based on games won
 
-# How to Run
+There's some hacks here and there CSS wise but I went with KISS.
+
+App follows John Papa's style guide: https://github.com/johnpapa/angular-styleguide
+
+## How to Run
 1. clone repo or download as zip file
 2. cd into unpacked folder using terminal
 3. run: `$ npm install`
@@ -29,12 +30,12 @@ Notes:
 
 (4) running `$ gulp` will create a dist folder that's being served by Express.
 
-# Tests
+## Tests
 
-## Running Unit Tests
+### Running Unit Tests
 Run the following in terminal: `$ gulp unit`
 
-## Notes
+### Notes
 Unit tests are on the form: Assign -> Act -> Assert
 
 Jasmine Describe blocks are replaced by more detailed 'it' blocks.

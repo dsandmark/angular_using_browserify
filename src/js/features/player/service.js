@@ -11,7 +11,7 @@ servicesModule
  * Each player contains:
  *   lost {Number} Number of games lost
  *   name {String} First and last name of player,
- *   points {Number} Arbitrary points,
+ *   points {Number} Total points won in games,
  *   won {Number} Number of games won
  *
  */
