@@ -22,7 +22,8 @@ function PlayerService() {
   service = {
     addPlayer: addPlayer,
     getPlayers: getPlayers,
-    updatePlayers: updatePlayers
+    updatePlayersGameAdded: updatePlayersGameAdded,
+    updatePlayersGameRemoved: updatePlayersGameRemoved
   };
 
   initialise();
@@ -74,11 +75,11 @@ function PlayerService() {
   }
 
   /**
-   * Updates players with new data from a game
+   * Updates players with data from a new game.
    * @param  {Object} game Game with new data
    * @returns {void}
    */
-  function updatePlayers(game) {
+  function updatePlayersGameAdded(game) {
     var playerOne = getPlayer(game.playerOneName);
     var playerTwo = getPlayer(game.playerTwoName);
 
@@ -106,6 +107,39 @@ function PlayerService() {
 
     } else {
       console.error('It\'s a tie. Go play some more!');
+    }
+  }
+
+  /**
+   * Updates players when a game is removed.
+   * @param  {Object} game Game with new data
+   * @returns {void}
+   */
+  function updatePlayersGameRemoved(game) {
+    var playerOne = getPlayer(game.playerOneName);
+    var playerTwo = getPlayer(game.playerTwoName);
+
+    var playerOneWonSets = 0;
+    var playerTwoWonSets = 0;
+
+    _.forEach(game.sets, function(set) {
+      if (set.playerOneScore > set.playerTwoScore) {
+        playerOneWonSets++;
+      } else {
+        playerTwoWonSets++;
+      }
+
+      playerOne.points -= set.playerOneScore;
+      playerTwo.points -= set.playerTwoScore;
+    });
+
+    if (playerOneWonSets > playerTwoWonSets) {
+      playerOne.won -= 1;
+      playerTwo.lost -= 1;
+
+    } else if (playerOneWonSets < playerTwoWonSets) {
+      playerTwo.won -= 1;
+      playerOne.lost -= 1;
     }
   }
 

@@ -54,4 +54,8 @@ describe('Player Service', function() {
     expect(service.getPlayers()).toEqual([]);
   });
 
+  it('should test updatePlayersGameRemoved', function() {
+    // TODO Tests needed if this was an app going to prod.
+  });
+
 });

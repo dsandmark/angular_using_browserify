@@ -58,7 +58,7 @@ function HomeController(gameService, playerService) {
 
     gameService.addGame(game);
 
-    playerService.updatePlayers(game);
+    playerService.updatePlayersGameAdded(game);
 
     vm.newGamePlayerOneScores = [];
     vm.newGamePlayerTwoScores = [];
@@ -166,6 +166,8 @@ function HomeController(gameService, playerService) {
 
   function removeGame(game) {
     gameService.removeGame(game);
+
+    playerService.updatePlayersGameRemoved(game);
   }
 
   /**
