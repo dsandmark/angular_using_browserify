@@ -13,6 +13,7 @@ Due to time constraints (tight deadline), the following apply:
 * Unit tests are not exhaustive, see them more as a POC
 * Error handling is logged in console
 * There's likely a bug or two in the app but it works as a POC
+* Ranking is only based on games won
 
 # How to Run
 1. clone repo or download as zip file

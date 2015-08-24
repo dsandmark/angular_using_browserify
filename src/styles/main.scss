@@ -51,6 +51,10 @@ h1 {
   font-size: 2em;
 }
 
+h2 {
+  font-size: 1.5em;
+}
+
 h3 {
   font-size: 1.17em;
 }
@@ -76,10 +80,9 @@ h4 {
 // Main
 
 .main__title {
-  font-size: 18px;
   padding-bottom: 20px;
   text-align: center;
-  margin: $default-margin;
+  margin-top: $large-margin;
 }
 
 .add-player {
@@ -109,7 +112,7 @@ h4 {
 }
 
 .table__header--medium {
-  width: 12%;
+  width: 14%;
 }
 
 .table__cell {

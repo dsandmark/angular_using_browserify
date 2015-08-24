@@ -6,7 +6,7 @@
 
 <section class="main">
 
-  <h3 class="main__title">Leaderboard:</h3>
+  <h2 class="main__title">Leaderboard:</h2>
 
   <div class="add-player" ng-if="vm.showAddPlayerContainer">
     <form novalidate>
@@ -32,8 +32,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="player in vm.players | limitTo: vm.nrOfPlayersShowing">
-        <td class="table__cell">{{ player.rank }}</td>
+      <tr data-ng-repeat="player in vm.players | orderBy:'won':true | limitTo: vm.nrOfPlayersShowing">
+        <td class="table__cell">{{ $index + 1 }}</td>
         <td class="table__cell"></td>
         <td class="table__cell">
           <div class="table__cell--image"></div>

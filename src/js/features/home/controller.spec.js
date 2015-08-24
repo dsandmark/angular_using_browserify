@@ -15,7 +15,6 @@ describe('HomeController', function() {
       lost: 3,
       name: 'name',
       points: 0,
-      rank: 0,
       won: 7
     };
 

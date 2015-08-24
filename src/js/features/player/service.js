@@ -12,13 +12,11 @@ servicesModule
  *   lost {Number} Number of games lost
  *   name {String} First and last name of player,
  *   points {Number} Arbitrary points,
- *   rank {Number} Player's rank in league,
  *   won {Number} Number of games won
  *
  */
 function PlayerService() {
   var players,
-      nextPlayerRank,
       service;
 
   service = {
@@ -41,7 +39,6 @@ function PlayerService() {
       lost: 0,
       name: name,
       points: 0,
-      rank: getNextPlayerRank(),
       won: 0
     };
 
@@ -57,16 +54,6 @@ function PlayerService() {
   }
 
   /**
-   * Creates a rank for a new player.
-   * @returns {Number} rank
-   */
-  function getNextPlayerRank() {
-    nextPlayerRank++;
-
-    return nextPlayerRank;
-  }
-
-  /**
    * Finds a player.
    * @param  {String} name Name of player to find
    * @returns {Object} player with name @param name
@@ -77,7 +64,6 @@ function PlayerService() {
    *   lost: 0
    *   name: 'Bob',
    *   points: 90,
-   *   rank: 1,
    *   won: 3
    * }
    */
@@ -129,6 +115,5 @@ function PlayerService() {
    */
   function initialise() {
     players = [];
-    nextPlayerRank = 0;
   }
 }
