@@ -25,6 +25,7 @@ App follows John Papa's style guide: https://github.com/johnpapa/angular-stylegu
 6. Bask
 
 Notes:
+
 (1) If cloning, make sure you're on branch "funding_circle".
 
 (3) You may need do run `$ sudo npm install` depending on your access rights.
