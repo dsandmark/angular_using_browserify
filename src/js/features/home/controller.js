@@ -43,6 +43,13 @@ function HomeController(gameService, playerService) {
       return;
     }
 
+    for (var i = 0; i < vm.nrOfSetFields.length; i++) {
+      if (!vm.newGamePlayerOneScores[i] || !vm.newGamePlayerTwoScores[i]) {
+        console.error('Need to populate every set field.');
+        return;
+      }
+    }
+
     var game = {
       playerOneName: vm.newGamePlayerOne.name,
       playerTwoName: vm.newGamePlayerTwo.name,
